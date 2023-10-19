@@ -9,22 +9,14 @@ body{
     gap: 1em;
     padding-left: 1em;
     margin: 1em;
+   
 }
 
 .container-box{
     width: 300px;
-    background-color: antiquewhite;
+    background-color: rgb(238, 36, 228);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
-}
-
-.container-recuper-login{
-    background-color: rgb(40, 80, 83);
-    color: #FFF;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-    font-size: 14pt;
-    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
 }
