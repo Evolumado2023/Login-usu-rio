@@ -63,7 +63,7 @@ function CriarConta() {
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                      Cadastrar
+                      Salvar
                     </Button>
                 </Form>
 

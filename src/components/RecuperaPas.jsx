@@ -1,6 +1,9 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { StyledText,formStyle } from "../assets/styles";
+import { FormStyle } from "../assets/styles";
+import { StyledText } from '../assets/styles';
+import { StyledButton } from '../assets/styles';
+import { Link } from 'react-router-dom';
 
 function RecuperaPas() {
 
@@ -12,7 +15,7 @@ function RecuperaPas() {
     <div className='container'>
         <h2 style={h2Style}>Recuperação de senha</h2>
 
-        <Form style={formStyle}>
+        <FormStyle>
             <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Label style={labelStyle}>Nome</Form.Label>
                 <Form.Control placeholder="Nome" />
@@ -27,12 +30,18 @@ function RecuperaPas() {
                 Recuperar senha
             </Button>
         
-        </Form>
+        </FormStyle>
 
-        <StyledText>Adicione seu nome de usuário e seu e-mail para recuperar seu acesso. 
-                    Em seguida, acesse o seu E-mail ou Gmail e  siga as instruções para 
-                    redefinir a sua senha.
+        <StyledText>
+        Adicione seu nome de usuário e seu e-mail para recuperar seu acesso. 
+            Em seguida, acesse o seu E-mail ou Gmail e  siga as instruções para 
+            redefinir a sua senha.
         </StyledText>
+        <Link to="/?">
+            <StyledButton>Voltar</StyledButton>
+        </Link>
+
+
     </div>
   );
 }

@@ -5,6 +5,8 @@ import './App.css';
 import Login from './components/Login';
 import CriarConta from './components/CriarConta';
 import RecuperaPas from './components/RecuperaPas';
+import Cadastrar from './components/Cadastrar';
+import View from './components/View';
 
 
 
@@ -16,6 +18,8 @@ function App() {
         <Route exact path='/' Component={Login} />
         <Route exact path='/criar-conta' Component={CriarConta} />
         <Route exact path='/recuperar-senha' Component={RecuperaPas} />
+        <Route exact path='/cadastro' Component={Cadastrar} />
+        <Route exact path='/view' Component={View} />
       </Routes>
     </Router>
   )

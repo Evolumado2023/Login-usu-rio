@@ -38,9 +38,12 @@ function Login() {
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
 
-      <Button variant="primary" type="submit" style={buttonStyle}>
-        Entrar
-      </Button>
+      <Link to={"/cadastro"}>
+        <Button variant="primary" type="submit" style={buttonStyle}>
+          Entrar
+        </Button>
+      </Link>
+
     </Form>
 
     <Container style={recuPassStyle}>

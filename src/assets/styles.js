@@ -5,11 +5,12 @@ export const StyledButton = styled.button`
   background-color: rgb(238, 36, 228);
   width: 300px;
   color: #fff;
-  font-size: 16pt;
+  font-size: 18pt;
+  font-weight: 600;
   padding: 10px 20px;
   border: 2px solid rgb(238, 36, 228);
   border-radius: 15px;
-  fontFamily: Sans-serif;
+  font-family: 'Sans-serif';
   margin-top: 5em;
 
   &:hover {
@@ -33,10 +34,10 @@ export const CenteredContainer = styled.div`
 
 
 
-export const formStyle = styled.form`
+export const FormStyle = styled.form`
   color: #FFF;
   font-size: 16pt;
-  max-width: 600px;
+  width: 800px;
   justify-content: center;
   display: flex;
   flex-direction: column;
