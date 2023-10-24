@@ -5,13 +5,24 @@ import { Link } from 'react-router-dom';
 
 function Cadastrar() {
 
+  const menu = { display: "flex", justifyContent: "space-between "}
+  const item = { display: "flex", gap :"2em"}
+  const liStyle = { color: '#fff', fontSize: "16pt", listStyle: "none"}
 
   const h1Style = { color: '#FFF'};
   
 
   return (
     <div className='container'>
-      <h1 style={h1Style}>Cadastre o seu contato</h1>
+      <div style={menu} className="conatiner-menu">
+        <div className="title">
+          <h1 style={h1Style}>Cadastre o seu contato</h1>
+        </div>
+        <div style={item} className="container-itens">
+          <li style={liStyle}>View</li>
+          <li style={liStyle}>Itens</li>
+        </div>
+      </div>
       <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Nome</Form.Label>

@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import  { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function CriarConta() {
 
@@ -45,22 +47,14 @@ function CriarConta() {
                        <Form.Label>Email</Form.Label> <Form.Control type="email" placeholder="Enter email" />
                       </Form.Group>
 
+                    </Row>
+
+                    <Row className="mb-3">
                       <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" />
                       </Form.Group>
                     </Row>
-
-                    <Row className="mb-3">
-                      <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>Nomde de usuário (ex.: "abc123")</Form.Label>
-                        <Form.Control />
-                      </Form.Group>
-                    </Row>
-
-                    <Form.Group className="mb-3" id="formGridCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
 
                     <Button variant="primary" type="submit">
                       Salvar
@@ -70,8 +64,11 @@ function CriarConta() {
                 {/* os estilos desse botão estão vindo do sttyles. Eu estilizei eles usando
                     o styled components
                  */}
+                        
                 <Link to="/?">
-                   <StyledButton>Voltar</StyledButton>
+                  <StyledButton><FontAwesomeIcon icon={faArrowLeft} /> 
+                    Voltar
+                  </StyledButton>
                 </Link>
             </div>
 

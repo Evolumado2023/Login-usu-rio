@@ -4,6 +4,9 @@ import { FormStyle } from "../assets/styles";
 import { StyledText } from '../assets/styles';
 import { StyledButton } from '../assets/styles';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 
 function RecuperaPas() {
 
@@ -37,8 +40,11 @@ function RecuperaPas() {
             Em seguida, acesse o seu E-mail ou Gmail e  siga as instruções para 
             redefinir a sua senha.
         </StyledText>
+        
         <Link to="/?">
-            <StyledButton>Voltar</StyledButton>
+            <StyledButton><FontAwesomeIcon icon={faArrowLeft} /> 
+               Voltar
+            </StyledButton>
         </Link>
 
 
