@@ -44,3 +44,6 @@ export const FormStyle = styled.form`
   align-items: center;
   margin: 0 auto;
 `;
+
+
+

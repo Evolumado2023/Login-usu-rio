@@ -9,14 +9,79 @@ body{
     gap: 1em;
     padding-left: 1em;
     margin: 1em;
-   
 }
 
 .container-box{
     width: 300px;
-    background-color: rgb(238, 36, 228);
+    background-color: rgb(36, 238, 194);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     font-family: 'Times New Roman', Times, serif;
+    
+}
+
+/* usado nos headers */
+.container-header{
+    margin-top: 1.2em;
+    justify-content: center;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.profile-icon {
+    width: 60px; /* Tamanho desejado do círculo */
+    height: 50px;
+    background-color: #FFF; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+
+.search{
+    padding: 10px; 
+    background-color: #FFF;
+    width: 410px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-self: center;
+}
+
+.search input{
+    font-size: 16pt;
+    outline: none;
+}
+
+
+/*   VER STYLES */
+.dados {
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px;
+}
+.apresentation{
+    padding: 15px;
+    width: 1000px;
+    background-color: bisque;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+
+.main-data{
+    width: 300px;
+    height: 300px;
+    background-color: aquamarine;
 }

@@ -2,27 +2,42 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function Cadastrar() {
 
-  const menu = { display: "flex", justifyContent: "space-between "}
-  const item = { display: "flex", gap :"2em"}
-  const liStyle = { color: '#fff', fontSize: "16pt", listStyle: "none"}
-
+  //const headerStyle = { backgroundColor: "rgb(134, 245, 245)"}
+  //const menu = { display: "flex", justifyContent: "space-between "}
+  const item = { display: "flex", gap :"2em", color: "rgb(238, 36, 228)"}
+  const liStyle = { color: '#fff', fontSize: "18pt", listStyle: "none"}
   const h1Style = { color: '#FFF'};
+  const i = { color: "rgb(238, 36, 228)" }
+  const a = { color: "#FFF", textDecoration: "none" }
   
+  
+
+  // <i class="fa-regular fa-user"></i> usuario
 
   return (
     <div className='container'>
-      <div style={menu} className="conatiner-menu">
-        <div className="title">
-          <h1 style={h1Style}>Cadastre o seu contato</h1>
+      <header>
+        <div className="container-header">
+          <div className="title">
+            <h1 style={h1Style}>Cadastre o seu contato</h1>
+          </div>
+          <div style={item} className="container-itens">
+            <li style={liStyle}>
+              <Link to={"/view"} style={a}>Contatos</Link>
+            </li>
+            <li style={liStyle}>
+              <div className="profile-icon">
+                <FontAwesomeIcon icon={faUser} style={i}/>
+              </div>
+            </li>
+          </div>
         </div>
-        <div style={item} className="container-itens">
-          <li style={liStyle}>View</li>
-          <li style={liStyle}>Itens</li>
-        </div>
-      </div>
+      </header>
       <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Nome</Form.Label>
@@ -57,13 +72,9 @@ function Cadastrar() {
             name="foto"
           />
       </Form.Group>
-
-      <Link to={"/view"}>
-        <Button variant="primary" type="submit">
-          Cadastrar Contato
-        </Button>
-
-      </Link>
+      <Button variant="primary" type="submit">
+        Cadastrar Contato
+      </Button>
 
     </Form>
     </div>
