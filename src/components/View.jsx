@@ -61,10 +61,15 @@ function View() {
               <td>@fat</td>
               <td>@foto</td>
               <td>
+
                 <Link to="/ver">
                   <FontAwesomeIcon icon={faEye} style={{ marginRight: '10px' }} />
                 </Link>
-                <FontAwesomeIcon icon={faPencil} style={{ marginRight: '10px' }} />
+
+                <Link to="/editar">
+                  <FontAwesomeIcon icon={faPencil} style={{ marginRight: '10px' }} />
+                </Link>
+
                 <FontAwesomeIcon icon={faTrash} />
               </td>
             </tr>

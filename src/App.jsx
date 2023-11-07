@@ -8,6 +8,7 @@ import RecuperaPas from './components/RecuperaPas';
 import Cadastrar from './components/Cadastrar';
 import View from './components/View';
 import Ver from './components/Ver';
+import Editar from './components/Editar';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/cadastro' Component={Cadastrar} />
         <Route exact path='/view' Component={View} />
         <Route exact path='/ver' Component={Ver} />
+        <Route exact path='/editar' Component={Editar} />
       </Routes>
     </Router>
   )

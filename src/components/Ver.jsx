@@ -23,9 +23,6 @@ function Ver() {
               </li>
             </ul>
           </div>
-          {/*<div className="footer-data">
-            <p>FOOTER DOS DADOS</p>
-          </div>*/}
         </div>
       </div>
 
