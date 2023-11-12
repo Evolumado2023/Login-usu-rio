@@ -7,12 +7,32 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
+import { useEffect, useState } from 'react';
+import handleExcluir from '../assets/js/handleExcluir';
 
 function View() {
   const white = { color: "#fff"};
   const m = { marginTop: "2em"}
   const icontStyle = {color: "rgb(238, 36, 228)", fontSize: "20pt", marginLeft: "25px"};
+
+  const [contatos, setContatos] = useState([]);
+
+  const fetContatosFromDatabase = async () => {
+    try{
+      const response = await fetch('http://localhost:8080/contatos');
+      const result = await response.json();
+
+      setContatos(result);
+    } catch (error) {
+      console.log("erro ao buscar dados no banco: ", error);
+    }
+  };
+
+  useEffect(() => {
+    fetContatosFromDatabase();
+  }, []);
+
+
 
   return (
     <div className="container">
@@ -42,42 +62,37 @@ function View() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@Foto</td>
-              <td>
-                <FontAwesomeIcon icon={faEye} style={{ marginRight: '10px' }}/>
-                <FontAwesomeIcon icon={faPencil} style={{ marginRight: '10px' }}/>
-                <FontAwesomeIcon icon={faTrash} />
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>@foto</td>
-              <td>
+            {contatos.map((contato, index) => (
+            <tr key={index}>
+              <td> {index + 1} </td>
+              <td> {contato.nome} </td>
+              <td> {contato.idade} </td>
+              <td> {contato.descricao} </td>
+              <td> {contato.foto} </td>
 
-                <Link to="/ver">
+              <td>
+                <Link  to={`/ver/${contato.idcontato}`}>
                   <FontAwesomeIcon icon={faEye} style={{ marginRight: '10px' }} />
                 </Link>
 
-                <Link to="/editar">
+                <Link to={`/editar/${contato.idcontato}`}>
                   <FontAwesomeIcon icon={faPencil} style={{ marginRight: '10px' }} />
                 </Link>
 
-                <FontAwesomeIcon icon={faTrash} />
+                <FontAwesomeIcon 
+                  icon={faTrash}
+                  onClick={() => handleExcluir(contato.idcontato, fetContatosFromDatabase)}
+                    
+                />
               </td>
             </tr>
+
+            ))}
 
           </tbody>
 
         </Table>
-          <Link to="/ver">
+          <Link to="/cadastro">
             <StyledButton> <FontAwesomeIcon icon={faArrowLeft} />  Voltar</StyledButton>
           </Link>
       </div>
