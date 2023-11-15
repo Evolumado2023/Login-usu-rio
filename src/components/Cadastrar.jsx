@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import criarContato from '../assets/js/crud/criarContato';
 
 
 function Cadastrar() {
@@ -16,12 +17,26 @@ function Cadastrar() {
   const i = { color: "rgb(238, 36, 228)" }
   const a = { color: "#FFF", textDecoration: "none" }
 
+  const { nome, 
+    idade, 
+    descricao, 
+    foto, 
+    uploading, 
+    setNome, 
+    setIdade, 
+    setDescricao, 
+    setFoto, 
+    handleSubmit } = criarContato();
+
+
 
   // variáveis que armazenam os dados que eu vou coletar dos campos inputs
-  const [nome, setNome] = useState('');
+  /*const [nome, setNome] = useState('');
   const [idade, setIdade] = useState('');
   const [descricao, setDescricao] = useState('');
   const [foto, setFoto] = useState('');
+
+  const [uploading, setUploading] = useState(false);
 
   
   const handleSubmit = async (event) => {
@@ -54,7 +69,7 @@ function Cadastrar() {
       console.error('Erro ao processar a solicitação: ', error.message)
 
     }
-  }
+  }*/
 
 
   return (
@@ -120,8 +135,8 @@ function Cadastrar() {
               onChange={(e) => setFoto(e.target.value)}
             />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Cadastrar Contato
+        <Button variant="primary" type="submit" disabled={uploading}>
+          {uploading ? 'Cadastrando...' : 'Cadastrar Contato'}
         </Button>
 
     </Form>

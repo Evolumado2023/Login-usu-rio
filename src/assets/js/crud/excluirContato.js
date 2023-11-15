@@ -1,5 +1,5 @@
 // handleExcluir.js
-const handleExcluir = async (idcontato, fetContatosFromDatabase) => {
+const excluirContato = async (idcontato, fetContatosFromDatabase) => {
     try {
       const response = await fetch(`http://localhost:8080/contatos/deletar/${idcontato}`, {
         method: 'DELETE',
@@ -16,5 +16,5 @@ const handleExcluir = async (idcontato, fetContatosFromDatabase) => {
     }
   };
   
-  export default handleExcluir;
+  export default excluirContato;
   

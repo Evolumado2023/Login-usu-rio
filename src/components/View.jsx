@@ -8,18 +8,44 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import handleExcluir from '../assets/js/handleExcluir';
+import excluirContato from '../assets/js/crud/excluirContato';
+//import handleExcluir from '../assets/js/handleExcluir';
 
 function View() {
   const white = { color: "#fff"};
   const m = { marginTop: "2em"}
   const icontStyle = {color: "rgb(238, 36, 228)", fontSize: "20pt", marginLeft: "25px"};
 
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  const handleSearchIconClick = () => {
+    fetContatosFromDatabase();
+  };
+  
+
+
   const [contatos, setContatos] = useState([]);
 
   const fetContatosFromDatabase = async () => {
     try{
-      const response = await fetch('http://localhost:8080/contatos');
+      let url = 'http://localhost:8080/contatos';
+
+      //const response = await fetch('http://localhost:8080/contatos');
+      //const result = await response.json();
+
+      if (searchQuery) {
+        url = `http://localhost:8080/contatos/buscarNome/${encodeURIComponent(searchQuery)}`;
+      }
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`Falha na solicitação: ${response.status}`);
+      }
+
       const result = await response.json();
 
       setContatos(result);
@@ -30,7 +56,8 @@ function View() {
 
   useEffect(() => {
     fetContatosFromDatabase();
-  }, []);
+  }, [searchQuery]);
+  
 
 
 
@@ -42,8 +69,18 @@ function View() {
           </div>
           <div>
             <div className='search'>
-              <input type="text" style={{border: "none"}} placeholder='Buscar contato'/>
-              <FontAwesomeIcon icon={faMagnifyingGlass} style={icontStyle} />           
+              <input type="text" 
+                     style={{border: "none"}} 
+                     placeholder='Buscar contato'
+                     value={searchQuery}
+                     onChange={handleSearchChange}
+              />
+
+              <FontAwesomeIcon 
+                icon={faMagnifyingGlass}
+                style={icontStyle}
+                onClick={handleSearchIconClick}    
+              />           
             </div>
           </div>
       </div>
@@ -62,32 +99,32 @@ function View() {
             </tr>
           </thead>
           <tbody>
-            {contatos.map((contato, index) => (
-            <tr key={index}>
-              <td> {index + 1} </td>
-              <td> {contato.nome} </td>
-              <td> {contato.idade} </td>
-              <td> {contato.descricao} </td>
-              <td> {contato.foto} </td>
+              {contatos.map((contato, index) => (
+              <tr key={contato.idcontato}>
+                <td> {index + 1} </td>
+                <td> {contato.nome} </td>
+                <td> {contato.idade} </td>
+                <td> {contato.descricao} </td>
+                <td> {contato.foto} </td>
 
-              <td>
-                <Link  to={`/ver/${contato.idcontato}`}>
-                  <FontAwesomeIcon icon={faEye} style={{ marginRight: '10px' }} />
-                </Link>
+                <td>
+                  <Link  to={`/ver/${contato.idcontato}`}>
+                    <FontAwesomeIcon icon={faEye} style={{ marginRight: '10px' }} />
+                  </Link>
 
-                <Link to={`/editar/${contato.idcontato}`}>
-                  <FontAwesomeIcon icon={faPencil} style={{ marginRight: '10px' }} />
-                </Link>
+                  <Link to={`/editar/${contato.idcontato}`}>
+                    <FontAwesomeIcon icon={faPencil} style={{ marginRight: '10px' }} />
+                  </Link>
 
-                <FontAwesomeIcon 
-                  icon={faTrash}
-                  onClick={() => handleExcluir(contato.idcontato, fetContatosFromDatabase)}
-                    
-                />
-              </td>
-            </tr>
+                  <FontAwesomeIcon 
+                    icon={faTrash}
+                    onClick={() => excluirContato(contato.idcontato, fetContatosFromDatabase)}
+                      
+                  />
+                </td>
+              </tr>
 
-            ))}
+              ))}
 
           </tbody>
 

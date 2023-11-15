@@ -3,39 +3,13 @@ import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
+import verContato from '../assets/js/crud/verContato';
 
 function Ver() {
 
-  const {idcontato} = useParams();
+  const { idcontato } = useParams();
   console.log('ID do Contato:', idcontato);
-  
-  const [contatos, setContatos] = useState({
-    nome: "",
-    idade: 0,
-    descricao: "",
-    foto: ""
-  });
-
-  const fetchContatoDetails = async() => {
-
-    try{
-      const response = await fetch(`http://localhost:8080/contatos/buscarId/${idcontato}`);
-      const result  = await response.json();
-      console.log('Result:', result);
-      setContatos(result);
-      
-      
-    }catch (error) {
-      console.log('Error ao buscar contato no banco: ', error);
-    }
-  };
-
-  useEffect( () => {
-    fetchContatoDetails();
-  }, [idcontato]);
-
-
-
+  const contato = verContato(idcontato);
 
 
   return (
@@ -43,22 +17,20 @@ function Ver() {
       <div className="dados">
         <div className="apresentation">
           <div className="main-data">
-            <img src={contatos.foto} alt={contatos.nome} />
+            <img src={contato.foto} alt={contato.nome} />
           </div>
           <div className="main-data">
             <ul>
-              <li>NOME: {contatos.nome} </li>
-              <li>IDADE: {contatos.idade}  </li>
+              <li>NOME: {contato.nome} </li>
+              <li>IDADE: {contato.idade}  </li>
               <li>DESCRIÇÃO: <p>
-                {contatos.descricao}
+                {contato.descricao}
               </p>
               </li>
             </ul>
           </div>
         </div>
       </div>
-
-
 
       <Link to="/view">
         <StyledButton> <FontAwesomeIcon icon={faArrowLeft} />  Voltar</StyledButton>

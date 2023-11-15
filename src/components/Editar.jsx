@@ -6,6 +6,7 @@ import { Link, json, useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import editarContato from '../assets/js/crud/editarContato';
 
 
 
@@ -19,74 +20,10 @@ function Editar() {
   const a = { color: "#FFF", textDecoration: "none" }
   
   const navigate = useNavigate();
-
+  
   const [exibirMensagem, setExibirMensagem] = useState(false);
-
   const { idcontato} = useParams();
-  const [contato, setContato] = useState({
-    nome: '',
-    idade: 0,
-    descricao: '',
-    foto: ''
-  });
-
-  // essa lógica é a mesma do Ver.jsx
-  useEffect(() => {
-    const fetchContatoDetails = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/contatos/buscarId/${idcontato}`);
-        const result = await response.json();
-        setContato(result);
-      } catch (error) {
-        console.log('Erro ao buscar contato no banco: ', error);
-      }
-    };
-
-    fetchContatoDetails();
-  }, [idcontato]);
-
-
-  const handleEditar = async(e) => {
-    e.preventDefault();
-
-    try{
-       
-      const response = await fetch(`http://localhost:8080/contatos/editar/${idcontato}`, {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(contato)
-      });
-      if (response.ok) {
-        // Atualizar o estado ou redirecionar para a página de visualização
-        // Exemplo de atualização do estado:
-         const responseBody = await response.text();
-         
-      // Verificar se a resposta não está vazia
-      if (responseBody) {
-        const updatedContato = JSON.parse(responseBody);
-        setContato(updatedContato);
-        setExibirMensagem(true);
-
-        // Redirecionar automaticamente após 2 segundos
-        navigate('/view');
-      } else {
-        console.log('Erro: resposta vazia');
-      }
-     
-      } else {
-        console.log('Erro ao editar contato:', response.statusText);
-      }
-
-
-    } catch(error) {
-      console.log('Erro ao editar contato:', error)
-    }
-
-    
-  };
-
+  const { contato, setContato, handleEditar } = editarContato(idcontato, navigate);
 
   return (
     <div className='container'>
