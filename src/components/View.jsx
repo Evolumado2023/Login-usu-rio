@@ -10,6 +10,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import excluirContato from '../assets/js/crud/excluirContato';
 //import handleExcluir from '../assets/js/handleExcluir';
+import { Form } from 'react-bootstrap';
+
 
 function View() {
   const white = { color: "#fff"};
@@ -68,7 +70,7 @@ function View() {
             <h1 style={white}>Lista de Contatos</h1>
           </div>
           <div>
-            <div className='search'>
+            {/*<div className='search'>
               <input type="text" 
                      style={{border: "none"}} 
                      placeholder='Buscar contato'
@@ -81,7 +83,17 @@ function View() {
                 style={icontStyle}
                 onClick={handleSearchIconClick}    
               />           
-            </div>
+            </div>*/}
+            <Form className="d-flex search">
+              <Form.Control
+                type="search"
+                placeholder="Buscar contato"
+                className="me-2"
+                aria-label="Search"
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
+            </Form>
           </div>
       </div>
 
