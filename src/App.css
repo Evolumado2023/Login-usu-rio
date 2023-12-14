@@ -84,3 +84,8 @@ body{
     height: 300px;
     background-color: aquamarine;
 }
+
+.main-data li span{
+    color: orange;
+    font-weight: 600;
+}

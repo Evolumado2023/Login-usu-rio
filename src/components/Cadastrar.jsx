@@ -17,6 +17,13 @@ function Cadastrar() {
   const i = { color: "rgb(238, 36, 228)" }
   const a = { color: "#FFF", textDecoration: "none" }
 
+
+  const [imagem, setImagem] = useState(null);
+  const [imagemPath, setImagemPath] = useState('');
+
+  //const [foto, setFoto] = useState(null);
+
+
   const { nome, 
     idade, 
     descricao, 
@@ -27,50 +34,6 @@ function Cadastrar() {
     setDescricao, 
     setFoto, 
     handleSubmit } = criarContato();
-
-
-
-  // variáveis que armazenam os dados que eu vou coletar dos campos inputs
-  /*const [nome, setNome] = useState('');
-  const [idade, setIdade] = useState('');
-  const [descricao, setDescricao] = useState('');
-  const [foto, setFoto] = useState('');
-
-  const [uploading, setUploading] = useState(false);
-
-  
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const data = { nome, idade, descricao, foto };
-
-    try{
-
-      const response = await fetch('http://localhost:8080/contatos/criar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data), 
-      });
-
-      if (response.ok) {
-        alert("Contato cadastrado como sucesso!");
-        setNome('');
-        setIdade('');
-        setDescricao('');
-        setFoto('');
-      } else {
-        console.error('Erro ao cadastrar contato: ', response.statusText)
-      }
-
-
-    } catch (error){
-      console.error('Erro ao processar a solicitação: ', error.message)
-
-    }
-  }*/
-
 
   return (
     <div className='container'>
@@ -130,9 +93,8 @@ function Cadastrar() {
             <Form.Label>Foto</Form.Label>
             <Form.Control
               type="file" // Usando <input type="file> para fazer upload da foto
-              value={foto}
               name="foto"
-              onChange={(e) => setFoto(e.target.value)}
+              onChange={(e) => setFoto(e.target.files[0])}
             />
         </Form.Group>
         <Button variant="primary" type="submit" disabled={uploading}>

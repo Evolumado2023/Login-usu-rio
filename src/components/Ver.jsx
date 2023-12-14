@@ -21,9 +21,9 @@ function Ver() {
           </div>
           <div className="main-data">
             <ul>
-              <li>NOME: {contato.nome} </li>
-              <li>IDADE: {contato.idade}  </li>
-              <li>DESCRIÇÃO: <p>
+              <li><span>NOME:</span> {contato.nome} </li>
+              <li><span>IDADE:</span> {contato.idade}  </li>
+              <li><span>IDADE:</span> <p>
                 {contato.descricao}
               </p>
               </li>
